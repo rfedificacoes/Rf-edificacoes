@@ -258,7 +258,7 @@
         <div class="portfolio-item"><img src="obra1.jpg" alt="Obra"></div>
         <div class="portfolio-item"><img src="obra2.jpg" alt="Obra"></div>
         <div class="portfolio-item video-item">
-            <video muted loop playsinline webkit-playsinline preload="metadata"><source src="videop.mp4" type="video/mp4"></video>
+            <video muted loop playsinline autoplay preload="auto"><source src="videop.mp4" type="video/mp4"></video>
         </div>
         <div class="portfolio-item"><img src="obra3.jpg" alt="Obra"></div>
         <div class="portfolio-item"><img src="obra4.jpg" alt="Obra"></div>
@@ -266,7 +266,7 @@
         <div class="portfolio-item hidden extra"><img src="obra5.jpg" alt="Obra"></div>
         <div class="portfolio-item hidden extra"><img src="obra6.jpg" alt="Obra"></div>
         <div class="portfolio-item hidden extra video-item">
-            <video muted loop playsinline webkit-playsinline preload="metadata"><source src="videop2.mp4" type="video/mp4"></video>
+            <video muted loop playsinline autoplay preload="auto"><source src="videop2.mp4" type="video/mp4"></video>
         </div>
         <div class="portfolio-item hidden extra"><img src="obra7.jpg" alt="Obra"></div>
         <div class="portfolio-item hidden extra"><img src="obra8.jpg" alt="Obra"></div>
@@ -281,10 +281,10 @@
     <div class="section-title"><h2>Produções</h2><div></div></div>
     <p class="section-subtitle">Acompanhe o dia a dia da nossa equipe em nosso Instagram.</p>
     <div class="story-grid">
-        <div class="story-item"><video muted loop playsinline webkit-playsinline preload="metadata"><source src="video1.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline webkit-playsinline preload="metadata"><source src="video2.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline webkit-playsinline preload="metadata"><source src="video3.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline webkit-playsinline preload="metadata"><source src="video5.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video1.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video2.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video3.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video5.mp4" type="video/mp4"></video></div>
     </div>
 </section>
 
@@ -372,30 +372,26 @@
     btnM.onclick = () => { xtra.forEach(e => e.classList.remove('hidden')); btnM.classList.add('hidden'); btnL.classList.remove('hidden'); };
     btnL.onclick = () => { xtra.forEach(e => e.classList.add('hidden')); btnM.classList.remove('hidden'); btnL.classList.add('hidden'); document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'}); };
 
-    /* CORREÇÃO PARA VÍDEOS NO EDGE / TABLETS */
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                video.play().catch(() => {});
-            } else {
-                video.pause();
-            }
-        });
-    }, { threshold: 0.1 });
-
-    window.addEventListener('load', () => {
+    /* MODIFICAÇÃO: PLAY FORÇADO PARA MÚLTIPLOS VÍDEOS SIMULTÂNEOS */
+    function playAllVideos() {
         const videos = document.querySelectorAll('video');
         videos.forEach(v => {
-            v.muted = true;
-            videoObserver.observe(v);
+            v.muted = true; // Garante que está mudo para o navegador permitir
+            v.play().catch(error => {
+                // Silencia erros de autoplay bloqueado
+            });
         });
+    }
 
-        /* Força ativação em dispositivos que bloqueiam autoplay sem interação inicial */
-        document.body.addEventListener('touchstart', () => {
-            videos.forEach(v => v.play().catch(() => {}));
-        }, { once: true });
-    });
+    // Tenta rodar ao carregar a página
+    window.addEventListener('load', playAllVideos);
+
+    // Tenta rodar toda vez que o usuário rolar a página (força os vídeos que entram na tela)
+    window.addEventListener('scroll', playAllVideos);
+
+    // Essencial para tablets: o primeiro toque libera todos de uma vez
+    document.body.addEventListener('touchstart', playAllVideos, { once: true });
+    document.body.addEventListener('click', playAllVideos, { once: true });
 </script>
 
 </body>
