@@ -110,14 +110,10 @@
         .porque-card { background: var(--branco); padding: 30px; border-radius: 10px; text-align: center; border-top: 5px solid var(--moonbeam); }
         .porque-card h4 { color: var(--azul-royal); margin-bottom: 10px; font-size: 1.2rem; }
 
-        /* PORTFÓLIO E ZOOM - AJUSTADO PARA MOBILE */
+        /* PORTFÓLIO E ZOOM */
         .portfolio-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 100%; }
         .portfolio-item { height: 120px; border-radius: 8px; overflow: hidden; background: #333; grid-column: span 2; cursor: pointer; }
-        
-        /* Segunda fila (itens 4 e 5) divididos ao meio */
         .portfolio-item:nth-child(4), .portfolio-item:nth-child(5) { grid-column: span 3; }
-        
-        /* Quarta fila (itens 9 e 10 que aparecem no "Ver Mais") divididos ao meio como a segunda fila */
         .portfolio-item:nth-child(9), .portfolio-item:nth-child(10) { grid-column: span 3; }
 
         .portfolio-item img, .portfolio-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -139,7 +135,7 @@
         .equipe-member { background: var(--branco); padding: 20px; border-radius: 15px; text-align: center; }
         .equipe-member img { height: 350px; width: 100%; object-fit: cover; border-radius: 10px; display: block; margin: 0 auto; }
 
-        /* ESTILO DA SEÇÃO LOCALIZAÇÃO - ALTERADO PARA NÃO SER LINK */
+        /* Localização */
         .localizacao-box { background: var(--branco); padding: 30px; border-radius: 15px; text-align: center; max-width: 900px; margin: 0 auto; display: block; color: var(--cinza-escuro); border: 2px solid var(--moonbeam); }
         .localizacao-box h3 { color: var(--azul-royal); margin-bottom: 10px; }
 
@@ -151,11 +147,7 @@
 
         /* RESPONSIVIDADE PC E TABLET */
         @media (min-width: 768px) {
-            .equipe-member img { 
-                aspect-ratio: 1/1; 
-                height: auto; 
-                max-width: 400px;
-            }
+            .equipe-member img { aspect-ratio: 1/1; height: auto; max-width: 400px; }
         }
 
         @media (min-width: 1025px) {
@@ -189,11 +181,7 @@
 
 <header>
     <div class="logo">RF EDIFICAÇÕES</div>
-    <div class="menu-toggle" id="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+    <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
     <nav id="nav-menu">
         <a href="#home">Início</a>
         <a href="#sobre">Nossa História</a>
@@ -208,7 +196,6 @@
     <div class="slide active" style="background-image: url('banner1.jpg');"></div>
     <div class="slide" style="background-image: url('banner2.jpg');"></div>
     <div class="slide" style="background-image: url('banner3.jpg');"></div>
-
     <div class="fixed-banner-content">
         <h2>Há Anos Transformando Projetos em Realidade</h2>
         <a href="https://wa.me/5599991822964?text=Ola,%20gostaria%20de%20fazer%20um%20orçamento" class="btn-banner" target="_blank">Entrar em Contato</a>
@@ -235,41 +222,26 @@
             <p>Nosso compromisso é entregar estruturas sólidas que atendam aos mais altos padrões de segurança e estética, do pequeno reparo à grande construção.</p>
         </div>
     </div>
-
     <div class="porque-grid">
-        <div class="porque-card">
-            <h4>Anos de Know-how</h4>
-            <p>Mais de uma década entregando resultados reais e duradouros.</p>
-        </div>
-        <div class="porque-card">
-            <h4>Versatilidade Técnica</h4>
-            <p>Especialistas em reformas e construções de todos os portes.</p>
-        </div>
-        <div class="porque-card">
-            <h4>Transparência Total</h4>
-            <p>Cumprimento rigoroso de cronogramas e orçamentos.</p>
-        </div>
+        <div class="porque-card"><h4>Anos de Know-how</h4><p>Mais de uma década entregando resultados reais e duradouros.</p></div>
+        <div class="porque-card"><h4>Versatilidade Técnica</h4><p>Especialistas em reformas e construções de todos os portes.</p></div>
+        <div class="porque-card"><h4>Transparência Total</h4><p>Cumprimento rigoroso de cronogramas e orçamentos.</p></div>
     </div>
 </section>
 
 <section id="portfolio" class="reveal">
     <div class="section-title"><h2>Nosso Portfólio</h2><div></div></div>
     <div class="portfolio-grid">
-        <div class="portfolio-item"><img src="obra1.jpg" alt="Obra"></div>
-        <div class="portfolio-item"><img src="obra2.jpg" alt="Obra"></div>
-        <div class="portfolio-item video-item">
-            <video muted loop playsinline autoplay preload="auto"><source src="videop.mp4" type="video/mp4"></video>
-        </div>
-        <div class="portfolio-item"><img src="obra3.jpg" alt="Obra"></div>
-        <div class="portfolio-item"><img src="obra4.jpg" alt="Obra"></div>
-        
-        <div class="portfolio-item hidden extra"><img src="obra5.jpg" alt="Obra"></div>
-        <div class="portfolio-item hidden extra"><img src="obra6.jpg" alt="Obra"></div>
-        <div class="portfolio-item hidden extra video-item">
-            <video muted loop playsinline autoplay preload="auto"><source src="videop2.mp4" type="video/mp4"></video>
-        </div>
-        <div class="portfolio-item hidden extra"><img src="obra7.jpg" alt="Obra"></div>
-        <div class="portfolio-item hidden extra"><img src="obra8.jpg" alt="Obra"></div>
+        <div class="portfolio-item"><img src="obra1.jpg"></div>
+        <div class="portfolio-item"><img src="obra2.jpg"></div>
+        <div class="portfolio-item video-item"><video muted loop playsinline preload="auto"><source src="videop.mp4" type="video/mp4"></video></div>
+        <div class="portfolio-item"><img src="obra3.jpg"></div>
+        <div class="portfolio-item"><img src="obra4.jpg"></div>
+        <div class="portfolio-item hidden extra"><img src="obra5.jpg"></div>
+        <div class="portfolio-item hidden extra"><img src="obra6.jpg"></div>
+        <div class="portfolio-item hidden extra video-item"><video muted loop playsinline preload="auto"><source src="videop2.mp4" type="video/mp4"></video></div>
+        <div class="portfolio-item hidden extra"><img src="obra7.jpg"></div>
+        <div class="portfolio-item hidden extra"><img src="obra8.jpg"></div>
     </div>
     <div class="btn-container">
         <button class="btn" id="btn-ver-mais">Ver Todos os Projetos</button>
@@ -281,36 +253,24 @@
     <div class="section-title"><h2>Produções</h2><div></div></div>
     <p class="section-subtitle">Acompanhe o dia a dia da nossa equipe em nosso Instagram.</p>
     <div class="story-grid">
-        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video1.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video2.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video3.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline autoplay preload="auto"><source src="video5.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video1.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video2.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video3.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video5.mp4" type="video/mp4"></video></div>
     </div>
 </section>
 
 <section id="equipe" class="reveal">
     <div class="section-title"><h2>Liderança e Equipe</h2><div></div></div>
     <div class="equipe-grid-dois">
-        <div class="equipe-member">
-            <img src="ceo.jpg" alt="CEO Ricardo Feitosa">
-            <p style="margin-top:15px;"><strong>Ricardo Feitosa</strong></p>
-            <p>CEO & Fundador</p>
-        </div>
-        <div class="equipe-member">
-            <img src="equipe1.jpg" alt="Equipe RF Edificações">
-            <p style="margin-top:15px;"><strong>Nossa Equipe</strong></p>
-            <p>Qualidade e Compromisso em Campo</p>
-        </div>
+        <div class="equipe-member"><img src="ceo.jpg" alt="CEO Ricardo Feitosa"><p style="margin-top:15px;"><strong>Ricardo Feitosa</strong></p><p>CEO & Fundador</p></div>
+        <div class="equipe-member"><img src="equipe1.jpg" alt="Equipe RF Edificações"><p style="margin-top:15px;"><strong>Nossa Equipe</strong></p><p>Qualidade e Compromisso em Campo</p></div>
     </div>
 </section>
 
 <section id="localizacao" class="reveal">
     <div class="section-title"><h2>Onde Estamos</h2><div></div></div>
-    <div class="localizacao-box">
-        <h3>📍 Nossa Sede</h3>
-        <p>Rua Duque de Caxias, Nº 933</p>
-        <p>Bairro: Centro | Açailândia - MA</p>
-    </div>
+    <div class="localizacao-box"><h3>📍 Nossa Sede</h3><p>Rua Duque de Caxias, Nº 933</p><p>Bairro: Centro | Açailândia - MA</p></div>
 </section>
 
 <footer id="contato">
@@ -324,16 +284,14 @@
         <div>
             <h3 style="margin-bottom:20px; font-family:'Playfair Display'; font-size:1.8rem;">Siga-nos</h3>
             <p>Acompanhe nossas histórias e dia a dia no Instagram:</p>
-            <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="footer-instagram-link">
-                <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4C18.39,20 20,18.39 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
-                @rfedificacoes
-            </a>
+            <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="footer-instagram-link">@rfedificacoes</a>
         </div>
     </div>
     <p style="border-top: 1px solid rgba(0,0,0,0.1); padding-top:20px; font-size:0.75rem; opacity:0.7;">© 2026 RF EDIFICAÇÕES - CONSTRUINDO O FUTURO COM EXPERIÊNCIA.</p>
 </footer>
 
 <script>
+    // Menu e Scroll Reveal originais
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     menuToggle.onclick = () => { navMenu.classList.toggle('active'); };
@@ -342,8 +300,7 @@
     });
 
     function initSlider(selector, interval) {
-        let idx = 0;
-        const items = document.querySelectorAll(selector);
+        let idx = 0; const items = document.querySelectorAll(selector);
         setInterval(() => {
             if(items.length > 0) {
                 items[idx].classList.remove('active');
@@ -357,41 +314,49 @@
 
     const scrollReveal = () => {
         document.querySelectorAll('.reveal').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 80) {
-                el.classList.add('active');
-            }
+            if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('active');
         });
     };
     window.addEventListener('scroll', scrollReveal);
-    window.addEventListener('load', scrollReveal);
 
     const btnM = document.getElementById('btn-ver-mais');
     const btnL = document.getElementById('btn-ver-menos');
     const xtra = document.querySelectorAll('.extra');
-
     btnM.onclick = () => { xtra.forEach(e => e.classList.remove('hidden')); btnM.classList.add('hidden'); btnL.classList.remove('hidden'); };
-    btnL.onclick = () => { xtra.forEach(e => e.classList.add('hidden')); btnM.classList.remove('hidden'); btnL.classList.add('hidden'); document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'}); };
+    btnL.onclick = () => { xtra.forEach(e => e.classList.add('hidden')); btnM.classList.remove('hidden'); btnL.classList.add('hidden'); };
 
-    /* MODIFICAÇÃO: PLAY FORÇADO PARA MÚLTIPLOS VÍDEOS SIMULTÂNEOS */
-    function playAllVideos() {
-        const videos = document.querySelectorAll('video');
-        videos.forEach(v => {
-            v.muted = true; // Garante que está mudo para o navegador permitir
-            v.play().catch(error => {
-                // Silencia erros de autoplay bloqueado
+    /* SOLUÇÃO DEFINITIVA PARA VÍDEOS EM TABLETS */
+    async function playAllVideosWithDelay() {
+        const videos = Array.from(document.querySelectorAll('video'));
+        
+        // Tablets travam se dermos play em tudo ao mesmo tempo. 
+        // Vamos dar play com 200ms de intervalo entre cada um.
+        for (let i = 0; i < videos.length; i++) {
+            const v = videos[i];
+            v.muted = true;
+            v.setAttribute('playsinline', '');
+            
+            // Tenta dar o play. Se falhar, o próximo evento de scroll tentará de novo.
+            v.play().catch(() => {
+                console.log("Aguardando interação para play.");
             });
-        });
+
+            // Delay de 200 milissegundos entre o play de um vídeo e outro
+            await new Promise(resolve => setTimeout(resolve, 200));
+        }
     }
 
-    // Tenta rodar ao carregar a página
-    window.addEventListener('load', playAllVideos);
-
-    // Tenta rodar toda vez que o usuário rolar a página (força os vídeos que entram na tela)
-    window.addEventListener('scroll', playAllVideos);
-
-    // Essencial para tablets: o primeiro toque libera todos de uma vez
-    document.body.addEventListener('touchstart', playAllVideos, { once: true });
-    document.body.addEventListener('click', playAllVideos, { once: true });
+    // Disparadores de Play
+    window.addEventListener('load', playAllVideosWithDelay);
+    window.addEventListener('scroll', playAllVideosWithDelay, { once: true });
+    document.body.addEventListener('touchstart', playAllVideosWithDelay, { once: true });
+    
+    // Verificação de segurança: Se o vídeo parar por economia de energia, força o play novamente
+    setInterval(() => {
+        document.querySelectorAll('video').forEach(v => {
+            if (v.paused) v.play().catch(() => {});
+        });
+    }, 3000);
 </script>
 
 </body>
