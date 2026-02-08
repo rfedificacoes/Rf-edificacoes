@@ -34,7 +34,6 @@
         /* Header e Menu Hamburguer */
         header { background: var(--moonbeam); color: var(--azul-royal); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         
-        /* AJUSTE: NOME RF EDIFICAÇÕES COM AZUL ROYAL PADRONIZADO */
         .logo { 
             font-family: 'Playfair Display', serif; 
             font-size: 1.5rem; 
@@ -55,39 +54,39 @@
         nav a { color: var(--azul-royal); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; padding: 15px; width: 100%; text-align: center; }
 
         /* Carrossel Principal */
-        .carousel { position: relative; height: 65vh; overflow: hidden; background: #000; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+        .carousel { position: relative; height: 65vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
         .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); }
         
-        /* FRASES DO BANNER: BRANCAS E FLUORESCENTES */
-        .slide-content { position: relative; z-index: 1; color: white; text-align: center; padding: 0 20px; }
-        .slide-content h2 { 
+        /* CAMADA FIXA DO BOTÃO E TEXTO SOBRE O BANNER */
+        .fixed-banner-content { position: relative; z-index: 10; color: white; text-align: center; padding: 0 20px; pointer-events: none; }
+        .fixed-banner-content h2 { 
             font-size: 2.2rem; 
             font-family: 'Playfair Display', serif; 
             font-weight: 700;
             color: var(--branco);
-            text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
             letter-spacing: 1px;
             margin-bottom: 25px;
         }
-
-        /* BOTÃO NO BANNER */
         .btn-banner {
             display: inline-block;
             padding: 12px 30px;
-            background-color: var(--azul-fluorescente);
-            color: #003d80;
+            background-color: var(--azul-royal);
+            color: #ffffff;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
             border-radius: 50px;
             font-size: 0.9rem;
             transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
         }
         .btn-banner:hover {
             background-color: var(--branco);
+            color: var(--azul-royal);
             transform: scale(1.05);
         }
 
@@ -98,7 +97,7 @@
         .section-title div { width: 70px; height: 4px; background: var(--moonbeam); margin: 15px auto; }
         .section-subtitle { text-align: center; margin: -30px auto 40px; max-width: 600px; font-size: 0.95rem; line-height: 1.6; color: var(--branco); }
 
-        /* Nossa História - MANTENDO IMAGENS QUADRADAS NO MOBILE */
+        /* Nossa História */
         .sobre-wrapper { display: flex; flex-direction: column; gap: 40px; background: var(--branco); padding: 40px 5%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .historia-slider { position: relative; width: 100%; height: 300px; overflow: hidden; border-radius: 10px; border-left: 8px solid var(--moonbeam); }
         .h-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1.2s; background-size: cover; background-position: center; }
@@ -111,10 +110,16 @@
         .porque-card { background: var(--branco); padding: 30px; border-radius: 10px; text-align: center; border-top: 5px solid var(--moonbeam); }
         .porque-card h4 { color: var(--azul-royal); margin-bottom: 10px; font-size: 1.2rem; }
 
-        /* PORTFÓLIO E ZOOM */
+        /* PORTFÓLIO E ZOOM - AJUSTADO PARA MOBILE */
         .portfolio-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 100%; }
         .portfolio-item { height: 120px; border-radius: 8px; overflow: hidden; background: #333; grid-column: span 2; cursor: pointer; }
+        
+        /* Segunda fila (itens 4 e 5) divididos ao meio */
         .portfolio-item:nth-child(4), .portfolio-item:nth-child(5) { grid-column: span 3; }
+        
+        /* Quarta fila (itens 9 e 10 que aparecem no "Ver Mais") divididos ao meio como a segunda fila */
+        .portfolio-item:nth-child(9), .portfolio-item:nth-child(10) { grid-column: span 3; }
+
         .portfolio-item img, .portfolio-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .portfolio-item:hover img, .portfolio-item:hover video { transform: scale(1.1); }
         .video-item { height: 120px; }
@@ -129,10 +134,10 @@
         .story-item { aspect-ratio: 9/16; background: #000; border-radius: 15px; overflow: hidden; border: 3px solid var(--moonbeam); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .story-item video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Equipe - MANTENDO IMAGENS QUADRADAS NO MOBILE */
+        /* Equipe */
         .equipe-grid-dois { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
         .equipe-member { background: var(--branco); padding: 20px; border-radius: 15px; text-align: center; }
-        .equipe-member img { height: 350px; width: 100%; object-fit: cover; border-radius: 10px; display: block; }
+        .equipe-member img { height: 350px; width: 100%; object-fit: cover; border-radius: 10px; display: block; margin: 0 auto; }
 
         /* ESTILO DA SEÇÃO LOCALIZAÇÃO */
         .localizacao-box { background: var(--branco); padding: 30px; border-radius: 15px; text-align: center; max-width: 900px; margin: 0 auto; text-decoration: none; display: block; color: var(--cinza-escuro); transition: 0.3s; border: 2px solid transparent; }
@@ -145,14 +150,22 @@
         .footer-info a, footer a { color: var(--azul-royal) !important; text-decoration: none; font-weight: bold; }
         .footer-instagram-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; background: var(--azul-royal); color: white !important; padding: 10px 20px; border-radius: 5px; }
 
-        /* RESPONSIVIDADE PC */
+        /* RESPONSIVIDADE PC E TABLET */
+        @media (min-width: 768px) {
+            .equipe-member img { 
+                aspect-ratio: 1/1; 
+                height: auto; 
+                max-width: 400px;
+            }
+        }
+
         @media (min-width: 1025px) {
             .menu-toggle { display: none; }
             nav { display: flex !important; position: static; flex-direction: row; width: auto; background: transparent; box-shadow: none; gap: 25px; padding: 0; }
             nav a { padding: 0; width: auto; font-size: 0.75rem; }
             header { padding: 20px 8%; }
             .carousel { height: 85vh; }
-            .slide-content h2 { font-size: 3.5rem; }
+            .fixed-banner-content h2 { font-size: 3.5rem; }
             .sobre-wrapper { flex-direction: row; padding: 60px; align-items: center; }
             .historia-slider { flex: 1.2; height: 400px; }
             .sobre-text { flex: 1; }
@@ -193,23 +206,13 @@
 </header>
 
 <div class="carousel" id="home">
-    <div class="slide active" style="background-image: url('banner1.jpg');">
-        <div class="slide-content">
-            <h2>Há Anos Transformando Projetos em Realidade</h2>
-            <a href="https://wa.me/5599991822964?text=Ola,%20gostaria%20de%20fazer%20um%20orçamento" class="btn-banner" target="_blank">Entrar em Contato</a>
-        </div>
-    </div>
-    <div class="slide" style="background-image: url('banner2.jpg');">
-        <div class="slide-content">
-            <h2>Construção Civil, Reformas e Projetos</h2>
-            <a href="https://wa.me/5599991822964?text=Ola,%20gostaria%20de%20fazer%20um%20orçamento" class="btn-banner" target="_blank">Entrar em Contato</a>
-        </div>
-    </div>
-    <div class="slide" style="background-image: url('banner3.jpg');">
-        <div class="slide-content">
-            <h2>Excelência do Residencial ao Industrial</h2>
-            <a href="https://wa.me/5599991822964?text=Ola,%20gostaria%20de%20fazer%20um%20orçamento" class="btn-banner" target="_blank">Entrar em Contato</a>
-        </div>
+    <div class="slide active" style="background-image: url('banner1.jpg');"></div>
+    <div class="slide" style="background-image: url('banner2.jpg');"></div>
+    <div class="slide" style="background-image: url('banner3.jpg');"></div>
+
+    <div class="fixed-banner-content">
+        <h2>Há Anos Transformando Projetos em Realidade</h2>
+        <a href="https://wa.me/5599991822964?text=Ola,%20gostaria%20de%20fazer%20um%20orçamento" class="btn-banner" target="_blank">Entrar em Contato</a>
     </div>
 </div>
 
@@ -217,9 +220,9 @@
     <div class="section-title"><h2>Nossa História</h2><div></div></div>
     <div class="sobre-wrapper">
         <div class="historia-slider">
-            <div class="h-slide active" style="background-image: url('ricardo1.jpg');"></div>
+            <div class="h-slide active" style="background-image: url('ricardo3.jpg');"></div>
             <div class="h-slide" style="background-image: url('ricardo2.jpg');"></div>
-            <div class="h-slide" style="background-image: url('ricardo3.jpg');"></div>
+            <div class="h-slide" style="background-image: url('sobre2.jpg');"></div>
         </div>
         <div class="sobre-text">
             <h3>Tradição e Modernidade</h3>
@@ -260,6 +263,7 @@
         </div>
         <div class="portfolio-item"><img src="obra3.jpg" alt="Obra"></div>
         <div class="portfolio-item"><img src="obra4.jpg" alt="Obra"></div>
+        
         <div class="portfolio-item hidden extra"><img src="obra5.jpg" alt="Obra"></div>
         <div class="portfolio-item hidden extra"><img src="obra6.jpg" alt="Obra"></div>
         <div class="portfolio-item hidden extra video-item">
@@ -281,6 +285,7 @@
         <div class="story-item"><video autoplay muted loop playsinline><source src="video1.mp4" type="video/mp4"></video></div>
         <div class="story-item"><video autoplay muted loop playsinline><source src="video2.mp4" type="video/mp4"></video></div>
         <div class="story-item"><video autoplay muted loop playsinline><source src="video3.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video autoplay muted loop playsinline><source src="video4.mp4" type="video/mp4"></video></div>
     </div>
 </section>
 
@@ -316,7 +321,7 @@
             <h3 style="margin-bottom:20px; font-family:'Playfair Display'; font-size:1.8rem;">RF Edificações</h3>
             <p>Atendimento especializado em obras residenciais, comerciais e industriais.</p>
             <p style="margin-top:15px;">📞 <a href="tel:5599991822964">(99) 99182-2964</a></p>
-            <p>✉️ <a href="mailto:ricardofeitosa2000@gmail.com">ricardofeitosa2000@gmail.com</a></p>
+            <p>✉️ <a href="mailto:rfedificacoes1@gmail.com">rfedificacoes1@gmail.com</a></p>
         </div>
         <div>
             <h3 style="margin-bottom:20px; font-family:'Playfair Display'; font-size:1.8rem;">Siga-nos</h3>
