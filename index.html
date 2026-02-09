@@ -32,7 +32,23 @@
         .bg-instagram { background: #e4405f; }
 
         /* Header e Menu Hamburguer */
-        header { background: var(--moonbeam); color: var(--azul-royal); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header { 
+            background: rgba(194, 184, 174, 0.85); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--azul-royal); 
+            padding: 15px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 15px; 
+            margin: 0 2%; 
+            z-index: 1000; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15); 
+            border-radius: 50px; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
         
         .logo { 
             font-family: 'Playfair Display', serif; 
@@ -46,20 +62,20 @@
         .menu-toggle span { width: 30px; height: 3px; background: var(--azul-royal); transition: 0.3s; }
 
         nav { 
-            position: absolute; top: 100%; left: 0; width: 100%; background: var(--moonbeam); 
+            position: absolute; top: 110%; left: 0; width: 100%; background: rgba(194, 184, 174, 0.95); 
             display: none; flex-direction: column; align-items: center; padding: 20px 0; 
             box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
         }
         nav.active { display: flex; }
         nav a { color: var(--azul-royal); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; padding: 15px; width: 100%; text-align: center; }
 
         /* Carrossel Principal */
-        .carousel { position: relative; height: 65vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; }
+        .carousel { position: relative; height: 65vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; margin-top: -60px; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
         .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); }
         
-        /* CAMADA FIXA DO BOTÃO E TEXTO SOBRE O BANNER */
         .fixed-banner-content { position: relative; z-index: 10; color: white; text-align: center; padding: 0 20px; pointer-events: none; }
         .fixed-banner-content h2 { 
             font-size: 2.2rem; 
@@ -95,11 +111,41 @@
         .section-title { text-align: center; margin-bottom: 45px; width: 100%; }
         .section-title h2 { font-size: 2.2rem; color: var(--moonbeam); text-transform: uppercase; font-family: 'Playfair Display', serif; }
         .section-title div { width: 70px; height: 4px; background: var(--moonbeam); margin: 15px auto; }
-        .section-subtitle { text-align: center; margin: -30px auto 40px; max-width: 600px; font-size: 0.95rem; line-height: 1.6; color: var(--branco); }
+        .section-subtitle { text-align: center; margin: -30px auto 20px; max-width: 600px; font-size: 0.95rem; line-height: 1.6; color: var(--branco); }
 
-        /* Nossa História */
+        .btn-instagram-center {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 40px;
+            background: #e4405f;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(228, 64, 95, 0.3);
+        }
+        .btn-instagram-center:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+            color: #e4405f;
+        }
+
+        /* Nossa História - AJUSTE QUADRADO */
         .sobre-wrapper { display: flex; flex-direction: column; gap: 40px; background: var(--branco); padding: 40px 5%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .historia-slider { position: relative; width: 100%; height: 300px; overflow: hidden; border-radius: 10px; border-left: 8px solid var(--moonbeam); }
+        .historia-slider { 
+            position: relative; 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            max-width: 500px;
+            margin: 0 auto;
+            overflow: hidden; 
+            border-radius: 10px; 
+            border-left: 8px solid var(--moonbeam); 
+        }
         .h-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1.2s; background-size: cover; background-position: center; }
         .h-slide.active { opacity: 1; }
         .sobre-text h3 { color: var(--azul-royal); margin-bottom: 15px; font-size: 1.8rem; }
@@ -110,13 +156,13 @@
         .porque-card { background: var(--branco); padding: 30px; border-radius: 10px; text-align: center; border-top: 5px solid var(--moonbeam); }
         .porque-card h4 { color: var(--azul-royal); margin-bottom: 10px; font-size: 1.2rem; }
 
-        /* PORTFÓLIO E ZOOM */
+        /* PORTFÓLIO */
         .portfolio-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 100%; }
         .portfolio-item { height: 120px; border-radius: 8px; overflow: hidden; background: #333; grid-column: span 2; cursor: pointer; }
         .portfolio-item:nth-child(4), .portfolio-item:nth-child(5) { grid-column: span 3; }
         .portfolio-item:nth-child(9), .portfolio-item:nth-child(10) { grid-column: span 3; }
 
-        .portfolio-item img, .portfolio-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .portfolio-item img, .portfolio-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; will-change: transform; }
         .portfolio-item:hover img, .portfolio-item:hover video { transform: scale(1.1); }
         .video-item { height: 120px; }
 
@@ -128,7 +174,7 @@
         /* PRODUÇÕES */
         .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
         .story-item { aspect-ratio: 9/16; background: #000; border-radius: 15px; overflow: hidden; border: 3px solid var(--moonbeam); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .story-item video { width: 100%; height: 100%; object-fit: cover; }
+        .story-item video { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
 
         /* Equipe */
         .equipe-grid-dois { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 900px; margin: 0 auto; }
@@ -145,7 +191,7 @@
         .footer-info a, footer a { color: var(--azul-royal) !important; text-decoration: none; font-weight: bold; }
         .footer-instagram-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; background: var(--azul-royal); color: white !important; padding: 10px 20px; border-radius: 5px; }
 
-        /* RESPONSIVIDADE PC E TABLET */
+        /* RESPONSIVIDADE */
         @media (min-width: 768px) {
             .equipe-member img { aspect-ratio: 1/1; height: auto; max-width: 400px; }
         }
@@ -154,12 +200,12 @@
             .menu-toggle { display: none; }
             nav { display: flex !important; position: static; flex-direction: row; width: auto; background: transparent; box-shadow: none; gap: 25px; padding: 0; }
             nav a { padding: 0; width: auto; font-size: 0.75rem; }
-            header { padding: 20px 8%; }
-            .carousel { height: 85vh; }
+            header { padding: 20px 5%; top: 20px; }
+            .carousel { height: 85vh; margin-top: -85px; }
             .fixed-banner-content h2 { font-size: 3.5rem; }
             .sobre-wrapper { flex-direction: row; padding: 60px; align-items: center; }
-            .historia-slider { flex: 1.2; height: 400px; }
-            .sobre-text { flex: 1; }
+            .historia-slider { flex: 1; margin: 0; }
+            .sobre-text { flex: 1.2; }
             .portfolio-grid { grid-template-columns: repeat(5, 1fr); gap: 15px; }
             .portfolio-item { grid-column: span 1 !important; height: 250px; }
             .equipe-grid-dois { grid-template-columns: 1fr 1fr; }
@@ -171,7 +217,7 @@
 <body>
 
 <div class="social-float">
-    <a href="https://wa.me/5599991822964?text=Olá,%20quero%20fazer%20um%20orçamento" target="_blank" class="social-btn bg-whatsapp">
+    <a href="https://wa.me/5599991822964?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="social-btn bg-whatsapp">
         <svg style="width:28px;height:28px" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23-1.48 0-2.93-.39-4.19-1.14l-.3-.17-3.12.82.83-3.04-.19-.3a8.13 8.13 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.23-8.24m-3.53 4.75c-.13 0-.34.05-.52.25-.19.2-.72.7-.72 1.71s.73 1.99.83 2.12c.11.13 1.44 2.19 3.48 3.07 2.04.88 2.04.58 2.41.55.37-.03 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.08-.19-.12-.41-.23s-1.3-.64-1.5-.71-.34-.11-.49.11c-.15.22-.58.71-.71.86-.13.15-.26.17-.48.06s-.94-.35-1.79-1.11c-.66-.59-1.1-1.32-1.23-1.54-.13-.22-.01-.34.1-.45.1-.1.22-.26.34-.38.11-.13.15-.23.23-.38.08-.15.04-.28-.02-.39s-.49-1.18-.67-1.62c-.18-.45-.36-.39-.49-.39z"/></svg>
     </a>
     <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="social-btn bg-instagram">
@@ -198,7 +244,7 @@
     <div class="slide" style="background-image: url('banner3.jpg');"></div>
     <div class="fixed-banner-content">
         <h2>Construindo com Excelência: Do Sonho à Entrega Final.</h2>
-        <a href="https://wa.me/5599991822964?text=Ola,%20gostaria%20de%20fazer%20um%20orçamento" class="btn-banner" target="_blank">Entrar em Contato</a>
+        <a href="https://wa.me/5599991822964?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento." class="btn-banner" target="_blank">Entrar em Contato</a>
     </div>
 </div>
 
@@ -231,17 +277,23 @@
 
 <section id="portfolio" class="reveal">
     <div class="section-title"><h2>Nosso Portfólio</h2><div></div></div>
+    <p class="section-subtitle">Algumas de nossas obras. Não perca tempo e solicite um orçamento.</p>
+
+    <a href="https://wa.me/5599991822964?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="btn-instagram-center">
+        Ir para Whatsapp
+    </a>
+
     <div class="portfolio-grid">
-        <div class="portfolio-item"><img src="obra1.jpg"></div>
-        <div class="portfolio-item"><img src="obra2.jpg"></div>
-        <div class="portfolio-item video-item"><video muted loop playsinline preload="auto"><source src="videop.mp4" type="video/mp4"></video></div>
-        <div class="portfolio-item"><img src="obra3.jpg"></div>
-        <div class="portfolio-item"><img src="obra4.jpg"></div>
-        <div class="portfolio-item hidden extra"><img src="obra5.jpg"></div>
-        <div class="portfolio-item hidden extra"><img src="obra6.jpg"></div>
-        <div class="portfolio-item hidden extra video-item"><video muted loop playsinline preload="auto"><source src="videop2.mp4" type="video/mp4"></video></div>
-        <div class="portfolio-item hidden extra"><img src="obra7.jpg"></div>
-        <div class="portfolio-item hidden extra"><img src="obra8.jpg"></div>
+        <div class="portfolio-item"><img src="obra1.jpg" loading="lazy"></div>
+        <div class="portfolio-item"><img src="obra2.jpg" loading="lazy"></div>
+        <div class="portfolio-item video-item"><video muted loop playsinline preload="metadata"><source src="videop.mp4" type="video/mp4"></video></div>
+        <div class="portfolio-item"><img src="obra3.jpg" loading="lazy"></div>
+        <div class="portfolio-item"><img src="obra4.jpg" loading="lazy"></div>
+        <div class="portfolio-item hidden extra"><img src="obra5.jpg" loading="lazy"></div>
+        <div class="portfolio-item hidden extra"><img src="obra6.jpg" loading="lazy"></div>
+        <div class="portfolio-item hidden extra video-item"><video muted loop playsinline preload="metadata"><source src="videop2.mp4" type="video/mp4"></video></div>
+        <div class="portfolio-item hidden extra"><img src="obra7.jpg" loading="lazy"></div>
+        <div class="portfolio-item hidden extra"><img src="obra8.jpg" loading="lazy"></div>
     </div>
     <div class="btn-container">
         <button class="btn" id="btn-ver-mais">Ver Todos os Projetos</button>
@@ -252,19 +304,24 @@
 <section id="producoes" class="reveal">
     <div class="section-title"><h2>Produções</h2><div></div></div>
     <p class="section-subtitle">Acompanhe o dia a dia da nossa equipe em nosso Instagram.</p>
+    
+    <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="btn-instagram-center">
+        Ir para nosso Instagram
+    </a>
+
     <div class="story-grid">
-        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video1.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video2.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video3.mp4" type="video/mp4"></video></div>
-        <div class="story-item"><video muted loop playsinline preload="auto"><source src="video5.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="metadata"><source src="video1.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="metadata"><source src="video2.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="metadata"><source src="video3.mp4" type="video/mp4"></video></div>
+        <div class="story-item"><video muted loop playsinline preload="metadata"><source src="video5.mp4" type="video/mp4"></video></div>
     </div>
 </section>
 
 <section id="equipe" class="reveal">
     <div class="section-title"><h2>Liderança e Equipe</h2><div></div></div>
     <div class="equipe-grid-dois">
-        <div class="equipe-member"><img src="ceo.jpg" alt="CEO Ricardo Feitosa"><p style="margin-top:15px;"><strong>Ricardo Feitosa</strong></p><p>CEO & Fundador</p></div>
-        <div class="equipe-member"><img src="equipe1.jpg" alt="Equipe RF Edificações"><p style="margin-top:15px;"><strong>Nossa Equipe</strong></p><p>Qualidade e Compromisso em Campo</p></div>
+        <div class="equipe-member"><img src="ceo.jpg" alt="CEO Ricardo Feitosa" loading="lazy"><p style="margin-top:15px;"><strong>Ricardo Feitosa</strong></p><p>CEO & Fundador</p></div>
+        <div class="equipe-member"><img src="equipe1.jpg" alt="Equipe RF Edificações" loading="lazy"><p style="margin-top:15px;"><strong>Nossa Equipe</strong></p><p>Qualidade e Compromisso em Campo</p></div>
     </div>
 </section>
 
@@ -287,11 +344,10 @@
             <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="footer-instagram-link">@rfedificacoes</a>
         </div>
     </div>
-    <p style="border-top: 1px solid rgba(0,0,0,0.1); padding-top:20px; font-size:0.75rem; opacity:0.7;">© 2026 RF EDIFICAÇÕES - CONSTRUINDO O FUTURO COM EXPERIÊNCIA.</p>
+    <p style="border-top: 1px solid rgba(0,0,0,0.1); padding-top:20px; font-size:0.75rem; opacity:0.7;">©️ 2026 RF EDIFICAÇÕES - CONSTRUINDO O FUTURO COM EXPERIÊNCIA.</p>
 </footer>
 
 <script>
-    // Menu e Scroll Reveal originais
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     menuToggle.onclick = () => { navMenu.classList.toggle('active'); };
@@ -325,38 +381,31 @@
     btnM.onclick = () => { xtra.forEach(e => e.classList.remove('hidden')); btnM.classList.add('hidden'); btnL.classList.remove('hidden'); };
     btnL.onclick = () => { xtra.forEach(e => e.classList.add('hidden')); btnM.classList.remove('hidden'); btnL.classList.add('hidden'); };
 
-    /* SOLUÇÃO DEFINITIVA PARA VÍDEOS EM TABLETS */
-    async function playAllVideosWithDelay() {
-        const videos = Array.from(document.querySelectorAll('video'));
-        
-        // Tablets travam se dermos play em tudo ao mesmo tempo. 
-        // Vamos dar play com 200ms de intervalo entre cada um.
-        for (let i = 0; i < videos.length; i++) {
-            const v = videos[i];
-            v.muted = true;
-            v.setAttribute('playsinline', '');
-            
-            // Tenta dar o play. Se falhar, o próximo evento de scroll tentará de novo.
-            v.play().catch(() => {
-                console.log("Aguardando interação para play.");
-            });
+    /* --- PERFORMANCE DE VÍDEO OTIMIZADA --- */
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.1 });
 
-            // Delay de 200 milissegundos entre o play de um vídeo e outro
-            await new Promise(resolve => setTimeout(resolve, 200));
-        }
-    }
+    document.querySelectorAll('video').forEach(v => {
+        videoObserver.observe(v);
+        v.setAttribute('preload', 'metadata');
+    });
 
-    // Disparadores de Play
-    window.addEventListener('load', playAllVideosWithDelay);
-    window.addEventListener('scroll', playAllVideosWithDelay, { once: true });
-    document.body.addEventListener('touchstart', playAllVideosWithDelay, { once: true });
-    
-    // Verificação de segurança: Se o vídeo parar por economia de energia, força o play novamente
+    // Manter o loop de segurança se necessário
     setInterval(() => {
         document.querySelectorAll('video').forEach(v => {
-            if (v.paused) v.play().catch(() => {});
+            if (v.closest('section').classList.contains('active') && v.paused) {
+                v.play().catch(() => {});
+            }
         });
-    }, 3000);
+    }, 4000);
 </script>
 
 </body>
