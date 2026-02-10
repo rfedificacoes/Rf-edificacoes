@@ -41,13 +41,20 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            position: sticky; 
+            position: fixed; /* Alterado para fixed para controle total de scroll */
             top: 15px; 
-            margin: 0 2%; 
+            left: 2%;
+            right: 2%; 
             z-index: 1000; 
             box-shadow: 0 8px 32px rgba(0,0,0,0.15); 
             border-radius: 50px; 
             border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.4s ease-in-out; /* Transição suave para subir/descer */
+        }
+
+        /* Classe para esconder o header */
+        header.nav-hidden {
+            transform: translateY(-150%);
         }
         
         .logo { 
@@ -71,7 +78,7 @@
         nav a { color: var(--azul-royal); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; font-weight: 700; padding: 15px; width: 100%; text-align: center; }
 
         /* Carrossel Principal */
-        .carousel { position: relative; height: 65vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; margin-top: -60px; }
+        .carousel { position: relative; height: 65vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
         .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); }
@@ -201,7 +208,7 @@
             nav { display: flex !important; position: static; flex-direction: row; width: auto; background: transparent; box-shadow: none; gap: 25px; padding: 0; }
             nav a { padding: 0; width: auto; font-size: 0.75rem; }
             header { padding: 20px 5%; top: 20px; }
-            .carousel { height: 85vh; margin-top: -85px; }
+            .carousel { height: 85vh; }
             .fixed-banner-content h2 { font-size: 3.5rem; }
             .sobre-wrapper { flex-direction: row; padding: 60px; align-items: center; }
             .historia-slider { flex: 1; margin: 0; }
@@ -225,7 +232,7 @@
     </a>
 </div>
 
-<header>
+<header id="main-header">
     <div class="logo">RF EDIFICAÇÕES</div>
     <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
     <nav id="nav-menu">
@@ -350,6 +357,23 @@
 <script>
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
+    const header = document.getElementById('main-header');
+    let lastScrollY = window.scrollY;
+
+    // Lógica para esconder/mostrar o header ao rolar
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            // Rolando para baixo - Esconde
+            header.classList.add('nav-hidden');
+            // Fecha o menu mobile se estiver aberto ao esconder a barra
+            navMenu.classList.remove('active');
+        } else {
+            // Rolando para cima - Mostra
+            header.classList.remove('nav-hidden');
+        }
+        lastScrollY = window.scrollY;
+    });
+
     menuToggle.onclick = () => { navMenu.classList.toggle('active'); };
     document.querySelectorAll('nav a').forEach(link => {
         link.onclick = () => { if(window.innerWidth <= 1024) { navMenu.classList.remove('active'); } };
@@ -398,7 +422,6 @@
         v.setAttribute('preload', 'metadata');
     });
 
-    // Manter o loop de segurança se necessário
     setInterval(() => {
         document.querySelectorAll('video').forEach(v => {
             if (v.closest('section').classList.contains('active') && v.paused) {
