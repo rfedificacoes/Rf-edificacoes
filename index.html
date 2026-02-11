@@ -27,8 +27,8 @@
 
         /* Botões Flutuantes */
         .social-float { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
-        .social-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
-        .bg-whatsapp { background: #25d366; }
+        .social-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; cursor: pointer; border: none; }
+        .bg-whatsapp { background: #25d366; text-decoration: none; }
         .bg-instagram { background: #e4405f; }
 
         /* Header e Menu Hamburguer */
@@ -41,7 +41,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            position: fixed; /* Alterado para fixed para controle total de scroll */
+            position: fixed; 
             top: 15px; 
             left: 2%;
             right: 2%; 
@@ -49,10 +49,9 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.15); 
             border-radius: 50px; 
             border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.4s ease-in-out; /* Transição suave para subir/descer */
+            transition: transform 0.4s ease-in-out;
         }
 
-        /* Classe para esconder o header */
         header.nav-hidden {
             transform: translateY(-150%);
         }
@@ -134,14 +133,21 @@
             text-transform: uppercase;
             transition: 0.3s;
             box-shadow: 0 5px 15px rgba(228, 64, 95, 0.3);
+            cursor: pointer;
+            border: none;
         }
         .btn-instagram-center:hover {
             transform: translateY(-3px);
             background: #ffffff;
             color: #e4405f;
         }
+        /* Botão específico para WhatsApp no estilo instagram-center */
+        .btn-whatsapp-center {
+            background: #25d366;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
 
-        /* Nossa História - AJUSTE QUADRADO */
+        /* Nossa História */
         .sobre-wrapper { display: flex; flex-direction: column; gap: 40px; background: var(--branco); padding: 40px 5%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .historia-slider { 
             position: relative; 
@@ -179,7 +185,6 @@
         .hidden { display: none; }
 
         /* PRODUÇÕES */
-        /* Ajustado para 3 colunas fixas em celulares para ficarem lado a lado */
         .story-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
@@ -203,7 +208,7 @@
         footer { background: var(--moonbeam); color: var(--azul-royal); padding: 60px 8% 30px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
         .footer-info a, footer a { color: var(--azul-royal) !important; text-decoration: none; font-weight: bold; }
-        .footer-instagram-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; background: var(--azul-royal); color: white !important; padding: 10px 20px; border-radius: 5px; }
+        .footer-instagram-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; background: var(--azul-royal); color: white !important; padding: 10px 20px; border-radius: 5px; cursor: pointer; border: none; }
 
         /* RESPONSIVIDADE */
         @media (min-width: 768px) {
@@ -236,9 +241,9 @@
     <a href="https://wa.me/5599991822964?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="social-btn bg-whatsapp">
         <svg style="width:28px;height:28px" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23-1.48 0-2.93-.39-4.19-1.14l-.3-.17-3.12.82.83-3.04-.19-.3a8.13 8.13 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.23-8.24m-3.53 4.75c-.13 0-.34.05-.52.25-.19.2-.72.7-.72 1.71s.73 1.99.83 2.12c.11.13 1.44 2.19 3.48 3.07 2.04.88 2.04.58 2.41.55.37-.03 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.08-.19-.12-.41-.23s-1.3-.64-1.5-.71-.34-.11-.49.11c-.15.22-.58.71-.71.86-.13.15-.26.17-.48.06s-.94-.35-1.79-1.11c-.66-.59-1.1-1.32-1.23-1.54-.13-.22-.01-.34.1-.45.1-.1.22-.26.34-.38.11-.13.15-.23.23-.38.08-.15.04-.28-.02-.39s-.49-1.18-.67-1.62c-.18-.45-.36-.39-.49-.39z"/></svg>
     </a>
-    <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="social-btn bg-instagram">
+    <button onclick="openInstagram()" class="social-btn bg-instagram">
         <svg style="width:28px;height:28px" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4C18.39,20 20,18.39 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
-    </a>
+    </button>
 </div>
 
 <header id="main-header">
@@ -295,7 +300,7 @@
     <div class="section-title"><h2>Nosso Portfólio</h2><div></div></div>
     <p class="section-subtitle">Algumas de nossas obras. Não perca tempo e solicite um orçamento.</p>
 
-    <a href="https://wa.me/5599991822964?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="btn-instagram-center">
+    <a href="https://wa.me/5599991822964?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento." target="_blank" class="btn-instagram-center btn-whatsapp-center">
         Ir para Whatsapp
     </a>
 
@@ -321,9 +326,9 @@
     <div class="section-title"><h2>Produções</h2><div></div></div>
     <p class="section-subtitle">Acompanhe o dia a dia da nossa equipe em nosso Instagram.</p>
     
-    <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="btn-instagram-center">
+    <button onclick="openInstagram()" class="btn-instagram-center">
         Ir para nosso Instagram
-    </a>
+    </button>
 
     <div class="story-grid">
         <div class="story-item"><video muted loop playsinline preload="metadata"><source src="video1.mp4" type="video/mp4"></video></div>
@@ -356,13 +361,32 @@
         <div>
             <h3 style="margin-bottom:20px; font-family:'Playfair Display'; font-size:1.8rem;">Siga-nos</h3>
             <p>Acompanhe nossas histórias e dia a dia no Instagram:</p>
-            <a href="https://www.instagram.com/rfedificacoes?igsh=eTFxZXhmeDdlaGtk" target="_blank" class="footer-instagram-link">@rfedificacoes</a>
+            <button onclick="openInstagram()" class="footer-instagram-link">@rfedificacoes</button>
         </div>
     </div>
     <p style="border-top: 1px solid rgba(0,0,0,0.1); padding-top:20px; font-size:0.75rem; opacity:0.7;">©️ 2026 RF EDIFICAÇÕES - CONSTRUINDO O FUTURO COM EXPERIÊNCIA.</p>
 </footer>
 
 <script>
+    /* --- FUNÇÃO PARA ABRIR INSTAGRAM (RESOLUÇÃO ANDROID/IOS) --- */
+    function openInstagram() {
+        const instagramUsername = "rfedificacoes";
+        const appUrl = "instagram://user?username=" + instagramUsername;
+        const webUrl = "https://www.instagram.com/" + instagramUsername;
+        
+        const start = Date.now();
+        
+        // Tenta abrir o app
+        window.location.href = appUrl;
+        
+        // Se em 500ms não sair da página, abre o navegador
+        setTimeout(() => {
+            if (Date.now() - start < 1000) {
+                window.open(webUrl, '_blank');
+            }
+        }, 500);
+    }
+
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     const header = document.getElementById('main-header');
@@ -371,12 +395,9 @@
     // Lógica para esconder/mostrar o header ao rolar
     window.addEventListener('scroll', () => {
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
-            // Rolando para baixo - Esconde
             header.classList.add('nav-hidden');
-            // Fecha o menu mobile se estiver aberto ao esconder a barra
             navMenu.classList.remove('active');
         } else {
-            // Rolando para cima - Mostra
             header.classList.remove('nav-hidden');
         }
         lastScrollY = window.scrollY;
