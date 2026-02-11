@@ -152,7 +152,7 @@
         .sobre-text h3 { color: var(--azul-royal); margin-bottom: 15px; font-size: 1.8rem; }
         .tag { background: var(--azul-royal); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin: 0 5px 10px 0; }
 
-        /* Grid Por que? */
+        /* Grid */
         .porque-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
         .porque-card { background: var(--branco); padding: 30px; border-radius: 10px; text-align: center; border-top: 5px solid var(--moonbeam); }
         .porque-card h4 { color: var(--azul-royal); margin-bottom: 10px; font-size: 1.2rem; }
@@ -348,37 +348,30 @@
 
 <script>
     /**
-     * NOVA LÓGICA DE ABERTURA DO INSTAGRAM
-     * Tenta os formatos que o app Android prioriza
+     * TÉCNICA DE REDIRECIONAMENTO AVANÇADO (2026)
+     * Resolve falha em Samsung/Motorola onde o app abre no Feed inicial
      */
     function openInstagram() {
-        const username = "rfedificacoes";
-        const webUrl = "https://www.instagram.com/" + username;
-        
-        // Formato que funciona melhor em Androids recentes (Samsung/Motorola)
-        const appUrlAndroid = "intent://instagram.com/_u/" + username + "/#Intent;package=com.instagram.android;scheme=https;end";
-        
-        // Formato para iOS/Legacy
-        const appUrlGeneric = "instagram://user?username=" + username;
-
-        // Detecta se é Android
+        const user = "rfedificacoes";
         const isAndroid = /Android/i.test(navigator.userAgent);
+        const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
         if (isAndroid) {
-            // No Android, o formato "intent" é o mais seguro para abrir o perfil direto
-            window.location.href = appUrlAndroid;
-            
-            // Fallback caso o intent falhe ou app não exista
+            // No Android, usamos o esquema 'intent' completo. 
+            // O segredo está no S.browser_fallback_url para garantir o perfil no navegador se falhar.
+            const androidIntent = `intent://www.instagram.com/${user}/#Intent;package=com.instagram.android;scheme=https;S.browser_fallback_url=https://www.instagram.com/${user};end`;
+            window.location.href = androidIntent;
+        } 
+        else if (isiOS) {
+            // No iOS, o formato nativo costuma ser mais resiliente
+            window.location.href = `instagram://user?username=${user}`;
             setTimeout(() => {
-                window.open(webUrl, '_blank');
+                window.location.href = `https://www.instagram.com/${user}`;
             }, 1000);
-        } else {
-            // iOS e outros
-            window.location.href = appUrlGeneric;
-            
-            setTimeout(() => {
-                window.open(webUrl, '_blank');
-            }, 800);
+        } 
+        else {
+            // Computador / Outros
+            window.open(`https://www.instagram.com/${user}`, '_blank');
         }
     }
 
